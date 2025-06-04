@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
+  <title>Dashboard Debate IFES</title>
+</head>
+
+<body class="bg-white text-gray-900">
+  <nav class="navbar navbar-expand-lg  bg-body-tertiary">
+    <div class="container-fluid">
+      <a href="#" class="navbar-brand ms-3">Análise do Debate</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#prompts">Prompts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#nuvens">Nuvens</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#analises">Análises</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="container-fluid mt-4">
+    <div class="row">
+      <section class="col col-md-6 col-sm-12 col-lg-12 ps-3">
+        <h3 class="lead fw-semibold mt-5 mb-3 ms-3">📊 Etapas da Análise</h3>
+        <ul class="ms-3">
+          <li class="lead">Transcrição e Revisão do vídeo</li>
+          <li class="lead">Pré-processamento dos textos</li>
+          <li class="lead">Geração das nuvens de palavras</li>
+          <li class="lead">Análises Críticas</li>
+        </ul>
+      </section>
+      <section class="col col-md-6 col-sm-12 col-lg-12 ps-3 mb-5 align-items-center" id="prompts">
+        <h3 class="lead fw-semibold mt-5 mb-3 ms-3">🧠 Prompts e Resultados</h3>
+        <p class="lead ms-3"> Para auxiliar no desenvolvimento deste trabalho foram realizadas
+          algumas consultas no chatGPT. Abaixo encontram-se alguns prompts utilizados neste processo e os resultados
+          obtidos</p>
+        <div class="accordion mx-auto w-75" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-controls="collapseOne">
+                Transcrição do vídeo do YouTube 📺
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                A transcrição do vídeo foi obtida pela ferramenta de transcrição do próprio YouTube. Nós a dividimos em
+                seis blocos e a
+                organizamos pelo ChatGPT a partir do prompt:
+                <strong>"Apenas organize a transcrição abaixo em falas corridas identificando os oradores, sem resumir
+                  nem processar nenhuma parte do texto:</strong>
+                <span class="fst-italic"> bloco de texto do debate</span>"
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Pré-processamento do texto com scripts 🛠️
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Para o pré-processamento do texto, utilizamos scripts em Python que realizam as seguintes etapas:
+                <ul>
+                  <li>Remoção de caracteres especiais e pontuação</li>
+                  <li>Conversão para minúsculas</li>
+                  <li>Tokenização</li>
+                  <li>Remoção de stopwords</li>
+                  <li>Stemming ou lematização (dependendo da necessidade)</li>
+                </ul>
+                Esses scripts foram desenvolvidos com base em bibliotecas como NLTK e SpaCy.
+                Os prompts utilizados para gerar os scripts foram:
+                <ul>
+                  <li><span class="fst-italic">print da estrutura de arquivos no colab</span> "<strong>quero colocar
+                      todo o documento “debate-completo.docx” em lower case. como faço isso?"</strong></li>
+                  <li><strong>"faça um script seguindo o mesmo contexto da solicitação anterior para que o output seja
+                      um texto normalizado para servir de input para a geração de uma nuvem de palavras."</strong></li>
+                  <li><strong>"agora considere novamente o arquivo /content/Trabalho-CE/debate-completo.docx. Quero
+                      individualizar as falas do professor ludovico e da candidata adriana em dois arquivos
+                      diferentes"</strong></li>
+                </ul>
+
+                Os resultados destes prompts proporcionaram os seguintes scripts:
+                <br></br>
+                <a href="https://colab.research.google.com/drive/1QoXrJBezZ9j1SvMyYrAAfaSaU44sruul?authuser=1#scrollTo=rJg0Ulq5Aejq"
+                  target="_blank">Google Colab 🐍</a>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                Análise crítica 🔍
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Prompts utilizados para gerar as análises críticas:
+                <ul>
+                  <li><strong>"Preciso de uma análise crítica separada para os pontos positivos dos dois candidatos do
+                      texto a seguir: "</strong>
+                    <span class="fst-italic">Transcrição enviada por inteiro</span>.
+                  </li>
+                  <li><strong>"Elabore os pontos críticos e faça também uma comparação, deixe de lado os pontos
+                      negativos"</strong></li>
+                  <li><strong>"Com base nas análises críticas extraídas das falas dos dois candidatos (Adriana e
+                      Ludovico),
+                      elabore um quadro comparativo com foco apenas nos pontos críticos e diferenciais positivos.
+                      Remova os aspectos negativos e organize os elementos de forma clara, destacando os principais
+                      eixos temáticos da campanha de cada um."</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="col col-md-6 col-sm-12 col-lg-12 ps-3 mb-5 align-items-center" id="nuvens">
+        <h3 class="lead fw-semibold mt-5 mb-3 ms-3">☁️ Geração das Nuvens de Palavras</h3>
+        <p class="lead ms-3">Para a geração das nuvens de palavras, utilizamos o site
+          <a href="https://www.wordclouds.com/" target="_blank">https://www.wordclouds.com/</a>
+        </p>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <h4 class="lead fw-semibold mt-5 mb-3 ms-3 text-center">Nuvem de Palavras - Professor Ludovico</h4>
+            <img src="debate-ludovico.png" alt="" class="img-fluid w-75 d-block" />
+          </div>
+          <div class="col-sm-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <h4 class="lead fw-semibold mt-5 mb-3 ms-3 text-center">Nuvem de Palavras - Professora Adriana</h4>
+            <img src="debate-adriana.png" alt="" class="img-fluid w-75" />
+          </div>
+          <div class="col-sm-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <h4 class="lead fw-semibold mt-5 mb-3 ms-3 text-center">Nuvem de Palavras - Debate Completo</h4>
+            <img src="debate-completo.png" alt="" class="img-fluid w-75" />
+          </div>
+        </div>
+      </section>
+      <section class="col col-md-6 col-sm-12 col-lg-12 ps-3 mb-5 align-items-center" id="analises">
+        <h3 class="lead fw-semibold mt-5 mb-3 ms-3">🧐 Análises Críticas</h3>
+        <div class="row g-4">
+          <div class="col-12 col-md-6">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title mb-4 text-primary">Adriana</h5>
+                <h6 class="fw-bold">Gestão e Planejamento</h6>
+                <p class="card-text lead">
+                  Técnica e estruturada, com valorização do PDI, núcleos temáticos e planejamento participativo.
+                </p>
+                <h6 class="fw-bold">Estilo de Liderança</h6>
+                <p class="card-text lead">
+                  Participativa, valorizando o coletivo, a escuta ativa e a gestão humanizada.
+                </p>
+                <h6 class="fw-bold">Foco em Permanência Estudantil</h6>
+                <p class="card-text lead">
+                  Propõe ampliação de assistência (alimentação, cultura, esportes), com centralidade nos estudantes.
+                </p>
+                <h6 class="fw-bold">Capacitação dos Servidores</h6>
+                <p class="card-text lead">
+                  Propõe ampliação dos programas stricto sensu e atenção especial aos TAEs nas áreas técnicas.
+                </p>
+                <h6 class="fw-bold">Inovação e Modernização</h6>
+                <p class="card-text lead">
+                  Modernização de processos e estruturação de sistemas para reduzir retrabalho.
+                </p>
+                <h6 class="fw-bold">Valorização da Carreira</h6>
+                <p class="card-text lead">
+                  Destaca a formação docente e trajetória na educação como base de legitimidade e pertencimento.
+                </p>
+                <h6 class="fw-bold">Articulação Política</h6>
+                <p class="card-text lead">
+                  Propõe construção de articulações com base no cargo, respeitando a institucionalidade do IFES.
+                </p>
+                <h6 class="fw-bold">Identidade Institucional</h6>
+                <p class="card-text lead">
+                  Promove inclusão de todos (docentes, TAEs, estudantes), destacando diversidade como eixo central.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title mb-4 text-success">Ludovico</h5>
+                <h6 class="fw-bold">Gestão e Planejamento</h6>
+                <p class="card-text lead">
+                  Prática e contínua, com base na manutenção de redes institucionais e na experiência acumulada.
+                </p>
+                <h6 class="fw-bold">Estilo de Liderança</h6>
+                <p class="card-text lead">
+                  Técnica-relacional, centrada na figura do educador e no protagonismo do reitor como articulador.
+                </p>
+                <h6 class="fw-bold">Foco em Permanência Estudantil</h6>
+                <p class="card-text lead">
+                  Identifica permanência como “dor central” e propõe criação de diretorias específicas para apoio
+                  direto.
+                </p>
+                <h6 class="fw-bold">Capacitação dos Servidores</h6>
+                <p class="card-text lead">
+                  Expansão com parcerias (UFES, multicampi) e institucionalização de editais amplos e equitativos.
+                </p>
+                <h6 class="fw-bold">Inovação e Modernização</h6>
+                <p class="card-text lead">
+                  Criação de IA institucional para desburocratização com uso de talentos internos e protocolos seguros.
+                </p>
+                <h6 class="fw-bold">Valorização da Carreira</h6>
+                <p class="card-text lead">
+                  Reforça orgulho institucional por sua trajetória de 50 anos, da base à gestão estratégica.
+                </p>
+                <h6 class="fw-bold">Articulação Política</h6>
+                <p class="card-text lead">
+                  Defende continuidade das articulações já consolidadas com bancada e uso da “reitoria itinerante”.
+                </p>
+                <h6 class="fw-bold">Identidade Institucional</h6>
+                <p class="card-text lead">
+                  Aponta identidade forte com a instituição, defendendo a lealdade e compromisso com a história do IFES.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+</html>
